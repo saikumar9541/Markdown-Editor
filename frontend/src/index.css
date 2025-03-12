@@ -132,20 +132,22 @@ textarea::placeholder {
   font-size: 0.9em;
   font-family: sans-serif;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  display: block;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  display: table;
+  table-layout: fixed;
 }
 
 @media (max-width: 768px) {
   .prose table {
     font-size: 0.8em;
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .prose table th,
   .prose table td {
     padding: 8px 12px;
-    min-width: 120px; /* Ensures columns don't get too narrow */
+    min-width: 120px;
   }
 }
 
@@ -154,16 +156,20 @@ textarea::placeholder {
   color: #1e293b;
   text-align: left;
   font-weight: bold;
+  width: 100%;
 }
 
 .prose table th,
 .prose table td {
   padding: 12px 15px;
   border: 1px solid #e2e8f0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .prose table tbody tr {
   border-bottom: 1px solid #e2e8f0;
+  width: 100%;
 }
 
 .prose table tbody tr:nth-of-type(even) {
@@ -172,6 +178,13 @@ textarea::placeholder {
 
 .prose table tbody tr:last-of-type {
   border-bottom: 2px solid #e2e8f0;
+}
+
+/* Make sure the table container takes full width */
+.prose > table {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* List Styles */
